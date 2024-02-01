@@ -1,28 +1,19 @@
 import json
-from enum import Enum
-import json
 from openai import OpenAI
 from weatherskill import get_weather, recommend_dress_by_weather, amap_weather_action
 
 client = OpenAI(
     api_key = "xxxx",
-    base_url = "http://192.168.100.2:8001/v1"
+    base_url = "http://api.com/v1" #your own url
 )
-'''
-class SkillFunctions(Enum):
-    GetWeather = 'get_weather'
 
-function_mapping = {
-    SkillFunctions.GetWeather: get_weather
-}
-'''
 function_map = {
     "get_weather": get_weather
 }
 def run_conversation():
     MODEL = "chatglm3-6b"
     messages = [
-            {"role": "user", "content": "今天上海天气怎么样，穿什么衣服比较好？"},
+            {"role": "user", "content": "How' the weather like today in Beijing? Do you have any suggestions about clothing?"},
         ]
     response = client.chat.completions.create(
         model=MODEL,
@@ -30,9 +21,8 @@ def run_conversation():
         temperature=0,
         functions=[
             {
-                #"name": SkillFunctions.GetWeather.value,
                 "name": "get_weather",
-                "description": "Get the current weather and get the outfit recommendations",
+                "description": "Get the current weather and get the weather recommendations",
                 "parameters": {
                     "type": "object",
                     "properties": {
@@ -74,17 +64,5 @@ def run_conversation():
     )
 
     print(completion_final.choices[0].message.content)
-
-'''
-            city = arguments.get("city")
-            if city:
-                weather_info = get_weather(city=city)
-                if "error" not in weather_info:
-                    print(weather_info)
-                else:
-                    print(weather_info["error"])
-            else:
-                print("城市名称未提供")
-'''
 
 run_conversation()
