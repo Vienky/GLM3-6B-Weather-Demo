@@ -1,7 +1,7 @@
 import json
 import requests
 
-def amap_weather_action(city: str) -> dict:
+def amap_weather_action(city):
     url = "xxx" #your weather api url
     key = "xxx" #your own weather api key
     params = {
