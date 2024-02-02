@@ -2,7 +2,7 @@
  
 This project uses openai's interface to retrieve the version of the GLM3-6B model, and will write a version that is retrieved in HTTP mode in the future。
 
-## requirements 
+## Requirements 
 
 - python<3.10 and python >=3.9
 - openai==1.3.7
