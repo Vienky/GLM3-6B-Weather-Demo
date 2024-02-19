@@ -6,7 +6,7 @@ openai.api_key = 'xxxx'
 openai.api_base = "http://api.com/v1" #your own api url
 import streamlit as st 
 from pathlib import Path
-from weather_function import run_conversation
+from function_weather import run_conversation
 
 st.title("Chat & Functionality Demo")
 
