@@ -1,6 +1,6 @@
 import json
 from openai import OpenAI
-from weatherskill import get_weather, recommend_dress_by_weather, amap_weather_action
+from weather_function import get_weather, recommend_dress_by_weather, amap_weather_action
 
 client = OpenAI(
     api_key = "xxxx",
